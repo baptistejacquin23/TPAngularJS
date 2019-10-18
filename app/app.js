@@ -1,14 +1,41 @@
 'use strict';
+let module = angular.module('myApp', []);
 
 // Declare app level module which depends on views, and core components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+module
+    .controller('MainController', ['$scope', function ($scope){
+        $scope.prenom = 'Baptiste';
+        $scope.nom = 'Jacquin';
+        $scope.personnes=[{
+            prenom: 'Thibaut',
+            nom: 'Montanier'
+        },
+        {
+            prenom: 'Charlotte', nom: '🍓'
+        },
+        {
+            prenom: 'Sophie',
+            nom: '🦒🦒🦒'
+        }]
+    }]);
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+module
+    .filter('currencyFR', ['numberFilter', function(numberFilter){
+        return function(input, symbol, nbDecimales){
+        if(isNaN(input)){
+            return input;
+        } else{
+            symbol = symbol || "€" ;
+            input = numberFilter(input,isNaN(nbDecimales) ? 2 : nbDecimales );
+            return input + ' ' + symbol;
+        }
+        };
+    }]);
+
+
+
+/*config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
+
+    $routeProvider.otherwise({redirectTo: '/view1'});
+}]);*/

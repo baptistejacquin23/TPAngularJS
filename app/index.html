@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +13,49 @@
   <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script> <script src="app.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-i18n/angular-locale_fr-fr.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
+<body ng-controller="MainController">
+<p>Bonjour {{prenom}} {{nom}}</p>
+<p>C'est ta première application</p>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <div>
+    <span>
+      <input type="text" ng-model="nom" >
+    </span>
+  </div>
 
-  <div ng-view></div>
+  <div>
+    <span>
+      <input type="text" ng-model="prenom" >
+    </span>
+  </div>
 
-  <div>AngularJS seed app: v<span app-version></span></div>
+
+  <input type="text" ng-model="searchText" placeholder="Search">
+<ul>
+  <li ng-repeat="personne in personnes | filter:searchText | orderBy:'nom' ">
+    {{personne.nom + ' ' + personne.prenom }}
+  </li>
+</ul>
+
+<div>
+  Filtre de date : {{ '2010-01-02' | date: 'dd MMMM yyyy' }}
+</div>
+<div>
+  Filtre de date : {{ '2010-01-02' | date: 'dd/MM/yyyy' }}
+</div>
+<div>
+  Filtre de monnaie : {{ 984257.256 | currency:'€'}}
+</div>
+<div>
+  Filtre de monnaie avec custom filtre : {{ 14322466.871 | currencyFR}}
+</div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
