@@ -4,69 +4,84 @@
 <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script> <script src="app.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-i18n/angular-locale_fr-fr.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+
+    <script src="graphics/personne.js"></script>
+    <script src="graphics/personnelistdirective.js"></script>
+    <script src="graphics/formpersonnedirective.js"></script>
+
 </head>
 <body ng-controller="MainController">
-<p>Bonjour {{prenom}} {{nom}}</p>
-<p>C'est ta première application</p>
+<div>
+    <personneslist></personneslist>
+    <p>Bonjour {{prenom}} {{nom}}</p>
+    <p>C'est ta première application</p>
 
-  <div>
+    <div>
     <span>
-      <input type="text" ng-model="nom" >
+      <input type="text" ng-model="nom">
     </span>
-  </div>
+    </div>
 
-  <div>
+    <div>
     <span>
-      <input type="text" ng-model="prenom" >
+      <input type="text" ng-model="prenom">
     </span>
-  </div>
+    </div>
 
 
-  <input type="text" ng-model="searchText" placeholder="Search">
-<ul>
-  <li ng-repeat="personne in personnes | filter:searchText | orderBy:'nom' ">
-    {{personne.nom + ' ' + personne.prenom }}
-  </li>
-</ul>
+    <input type="text" ng-model="searchText" placeholder="Search">
+    <ul>
+        <li ng-repeat="personne in personnes | filter:searchText | orderBy:'nom' ">
+            {{personne.nom + ' ' + personne.prenom }}
+        </li>
+    </ul>
+
+    <div>
+        Filtre de date : {{ '2010-01-02' | date: 'dd MMMM yyyy' }}
+    </div>
+    <div>
+        Filtre de date : {{ '2010-01-02' | date: 'dd/MM/yyyy' }}
+    </div>
+    <div>
+        Filtre de monnaie : {{ 984257.256 | currency:'€'}}
+    </div>
+    <div>
+        Filtre de monnaie avec custom filtre : {{ 14322466.871 | currencyFR}}
+    </div>
+</div>
 
 <div>
-  Filtre de date : {{ '2010-01-02' | date: 'dd MMMM yyyy' }}
-</div>
-<div>
-  Filtre de date : {{ '2010-01-02' | date: 'dd/MM/yyyy' }}
-</div>
-<div>
-  Filtre de monnaie : {{ 984257.256 | currency:'€'}}
-</div>
-<div>
-  Filtre de monnaie avec custom filtre : {{ 14322466.871 | currencyFR}}
+    <br><br>
+    <personnes lespersonnes="personnes"></personnes>
 </div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="core/version/version.js"></script>
-  <script src="core/version/version-directive.js"></script>
-  <script src="core/version/interpolate-filter.js"></script>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+<script src="core/version/version.js"></script>
+<script src="core/version/version-directive.js"></script>
+<script src="core/version/interpolate-filter.js"></script>
 </body>
 </html>

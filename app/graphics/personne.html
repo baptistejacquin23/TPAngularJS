@@ -1,0 +1,13 @@
+<p>Yo {{prenom}} {{nom}}</p>
+
+<personneform personnedetail="personneInfo"></personneform>
+
+<div>
+    <input type="text" placeholder="Entrez votre recherche" ng-model="searchText"/>
+    <ul>
+        <li ng-repeat="personne in personnes | filter:searchText | orderBy:'prenom'" ng-click="selectPersonne(personne)">
+            <personneslistdetail personnedetail="personne"></personneslistdetail>
+        </li>
+    </ul>
+
+</div>

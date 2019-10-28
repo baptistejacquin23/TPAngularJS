@@ -11,7 +11,8 @@ module
             nom: 'Montanier'
         },
         {
-            prenom: 'Charlotte', nom: '🍓'
+            prenom: 'Charlotte',
+            nom: '🍓'
         },
         {
             prenom: 'Sophie',
